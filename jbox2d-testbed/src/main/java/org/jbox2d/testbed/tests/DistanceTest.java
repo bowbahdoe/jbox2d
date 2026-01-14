@@ -63,12 +63,10 @@ public class DistanceTest extends TestbedTest {
 		}
 		
 		{
-			m_positionB = new Vec2();
-			m_positionB.set(12.017401f, 0.13678508f);
+			m_positionB = new Vec2(12.017401f, 0.13678508f);
 			m_angleB = -0.0109265f;
 			
-			m_transformB = new Transform();
-			m_transformB.set(m_positionB, m_angleB);
+			m_transformB = new Transform(m_positionB, m_angleB);
 			
 			m_polygonB = new PolygonShape();
 			m_polygonB.setAsBox(2.0f, 0.1f);
