@@ -283,7 +283,8 @@ public class ParticleSystem {
       particleDef.color = groupDef.color;
       particleDef.userData = groupDef.userData;
       Shape shape = groupDef.shape;
-      transform.set(groupDef.position, groupDef.angle);
+      transform = new Transform(groupDef.position, groupDef.angle);
+
       AABB aabb = temp;
       int childCount = shape.getChildCount();
       for (int childIndex = 0; childIndex < childCount; childIndex++) {
