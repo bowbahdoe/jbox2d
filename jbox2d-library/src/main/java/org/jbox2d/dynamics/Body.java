@@ -741,8 +741,6 @@ public class Body {
    * @return the same point expressed in world coordinates.
    */
   public final Vec2 getWorldPoint(Vec2 localPoint) {
-    Vec2 v = new Vec2();
-    getWorldPointToOut(localPoint);
     return Transform.mul(m_xf, localPoint);
   }
 
