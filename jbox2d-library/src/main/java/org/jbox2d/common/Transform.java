@@ -58,6 +58,10 @@ public class Transform implements Serializable {
     q = _R.clone();
   }
 
+  public Transform(Vec2 p, float angle) {
+    this.p = p;
+    this.q = new Rot(angle);
+  }
   /** Set this to equal another transform. */
   public final Transform set(final Transform xf) {
     return new Transform(xf.p, xf.q);
