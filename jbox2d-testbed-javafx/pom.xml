@@ -47,12 +47,12 @@
                 <dependency>
                     <groupId>org.openjfx</groupId>
                     <artifactId>javafx-base</artifactId>
-                    <version>${javafx.version}</version>
+                    <version>${maven.compiler.target}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.openjfx</groupId>
                     <artifactId>javafx-controls</artifactId>
-                    <version>${javafx.version}</version>
+                    <version>${maven.compiler.target}</version>
                 </dependency>
 	</dependencies>
         

@@ -28,9 +28,6 @@
           <excludes>
             <exclude>**/gwtemul/**</exclude>
           </excludes>
-            <compilerArgs>
-                <arg>--enable-preview</arg>
-            </compilerArgs>
         </configuration>
       </plugin>
     </plugins>
