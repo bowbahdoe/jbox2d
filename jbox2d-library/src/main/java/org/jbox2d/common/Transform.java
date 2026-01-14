@@ -67,17 +67,6 @@ public class Transform implements Serializable {
     return new Transform(xf.p, xf.q);
   }
 
-  /**
-   * Set this based on the position and angle.
-   * 
-   * @param p
-   * @param angle
-   */
-  public final void set(Vec2 p, float angle) {
-    this.p.set(p);
-    q.set(angle);
-  }
-
   public final static Vec2 mul(final Transform T, final Vec2 v) {
     return new Vec2((T.q.c * v.x - T.q.s * v.y) + T.p.x, (T.q.s * v.x + T.q.c * v.y) + T.p.y);
   }
