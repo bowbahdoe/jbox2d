@@ -75,8 +75,8 @@ public class Collision {
       Transform xfA, Transform xfB) {
     input.proxyA.set(shapeA, indexA);
     input.proxyB.set(shapeB, indexB);
-    input.transformA.set(xfA);
-    input.transformB.set(xfB);
+    input.transformA = xfA;
+    input.transformB = xfB;
     input.useRadii = true;
 
     cache.count = 0;
