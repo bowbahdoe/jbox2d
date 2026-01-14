@@ -23,6 +23,7 @@
  ******************************************************************************/
 package org.jbox2d.dynamics;
 
+import org.jbox2d.WasFinal;
 import org.jbox2d.collision.broadphase.BroadPhase;
 import org.jbox2d.collision.shapes.MassData;
 import org.jbox2d.collision.shapes.Shape;
@@ -62,7 +63,7 @@ public class Body {
   /**
    * The previous transform for particle simulation
    */
-  public final Transform m_xf0 = new Transform();
+  public @WasFinal Transform m_xf0 = new Transform();
 
   /**
    * The swept motion for CCD
@@ -741,11 +742,11 @@ public class Body {
    */
   public final Vec2 getWorldPoint(Vec2 localPoint) {
     Vec2 v = new Vec2();
-    getWorldPointToOut(localPoint, v);
-    return v;
+    getWorldPointToOut(localPoint);
+    return Transform.mul(m_xf, localPoint);
   }
 
-  public final void getWorldPointToOut(Vec2 localPoint, Vec2 out) {
+  public final void getWorldPointToOut(Vec2 localPoint) {
     Transform.mulToOut(m_xf, localPoint, out);
   }
 
@@ -837,7 +838,7 @@ public class Body {
   }
 
   public final void getLinearVelocityFromLocalPointToOut(Vec2 localPoint, Vec2 out) {
-    getWorldPointToOut(localPoint, out);
+    getWorldPointToOut(localPoint);
     getLinearVelocityFromWorldPointToOut(out, out);
   }
 

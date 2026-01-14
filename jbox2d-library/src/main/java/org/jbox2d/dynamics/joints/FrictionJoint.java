@@ -26,6 +26,8 @@
  */
 package org.jbox2d.dynamics.joints;
 
+import java.util.Optional;
+
 import org.jbox2d.common.Mat22;
 import org.jbox2d.common.MathUtils;
 import org.jbox2d.common.Rot;
@@ -82,13 +84,13 @@ public class FrictionJoint extends Joint {
   }
 
   @Override
-  public void getAnchorA(Vec2 argOut) {
-    m_bodyA.getWorldPointToOut(m_localAnchorA, argOut);
+  public Optional<Vec2> getAnchorA() {
+    return Optional.of(m_bodyA.getWorldPoint(m_localAnchorA).clone());
   }
 
   @Override
-  public void getAnchorB(Vec2 argOut) {
-    m_bodyB.getWorldPointToOut(m_localAnchorB, argOut);
+  public Optional<Vec2> getAnchorB() {
+    return Optional.of(m_bodyB.getWorldPoint(m_localAnchorB).clone());
   }
 
   @Override

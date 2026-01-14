@@ -29,6 +29,8 @@ import org.jbox2d.dynamics.SolverData;
 import org.jbox2d.dynamics.World;
 import org.jbox2d.pooling.IWorldPool;
 
+import module java.base;
+
 // updated to rev 100
 /**
  * The base joint class. Joints are used to constrain two bodies together in various fashions. Some
@@ -154,14 +156,14 @@ public abstract class Joint {
    * 
    * @return
    */
-  public abstract void getAnchorA(Vec2 out);
+  public abstract Optional<Vec2> getAnchorA();
 
   /**
    * get the anchor point on bodyB in world coordinates.
    * 
    * @return
    */
-  public abstract void getAnchorB(Vec2 out);
+  public abstract Optional<Vec2> getAnchorB();
 
   /**
    * get the reaction force on body2 at the joint anchor in Newtons.

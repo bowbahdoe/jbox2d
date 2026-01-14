@@ -34,6 +34,8 @@ import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.SolverData;
 import org.jbox2d.pooling.IWorldPool;
 
+import module java.base;
+
 //Gear Joint:
 //C0 = (coordinate1 + ratio * coordinate2)_initial
 //C = (coordinate1 + ratio * coordinate2) - C0 = 0
@@ -196,13 +198,13 @@ public class GearJoint extends Joint {
   }
 
   @Override
-  public void getAnchorA(Vec2 argOut) {
-    m_bodyA.getWorldPointToOut(m_localAnchorA, argOut);
+  public Optional<Vec2> getAnchorA() {
+    return Optional.of(m_bodyA.getWorldPoint(m_localAnchorA).clone());
   }
 
   @Override
-  public void getAnchorB(Vec2 argOut) {
-    m_bodyB.getWorldPointToOut(m_localAnchorB, argOut);
+  public Optional<Vec2> getAnchorB() {
+    return Optional.of(m_bodyA.getWorldPoint(m_localAnchorA).clone());
   }
 
   @Override

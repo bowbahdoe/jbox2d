@@ -124,12 +124,12 @@ public class WeldJoint extends Joint {
 
   @Override
   public void getAnchorA(Vec2 argOut) {
-    m_bodyA.getWorldPointToOut(m_localAnchorA, argOut);
+    m_bodyA.getWorldPointToOut(m_localAnchorA);
   }
 
   @Override
   public void getAnchorB(Vec2 argOut) {
-    m_bodyB.getWorldPointToOut(m_localAnchorB, argOut);
+    m_bodyB.getWorldPointToOut(m_localAnchorB);
   }
 
   @Override

@@ -23,6 +23,8 @@
  ******************************************************************************/
 package org.jbox2d.dynamics.joints;
 
+import java.util.Optional;
+
 import org.jbox2d.common.MathUtils;
 import org.jbox2d.common.Settings;
 import org.jbox2d.common.Vec2;
@@ -240,11 +242,15 @@ public class ConstantVolumeJoint extends Joint {
 
   /** No-op */
   @Override
-  public void getAnchorA(Vec2 argOut) {}
+  public Optional<Vec2> getAnchorA() {
+    return Optional.empty();
+  }
 
   /** No-op */
   @Override
-  public void getAnchorB(Vec2 argOut) {}
+  public Optional<Vec2> getAnchorB() {
+    return Optional.empty();
+  }
 
   /** No-op */
   @Override

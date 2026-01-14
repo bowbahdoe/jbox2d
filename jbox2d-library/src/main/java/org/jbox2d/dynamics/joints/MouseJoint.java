@@ -23,6 +23,8 @@
  ******************************************************************************/
 package org.jbox2d.dynamics.joints;
 
+import java.util.Optional;
+
 import org.jbox2d.common.Mat22;
 import org.jbox2d.common.MathUtils;
 import org.jbox2d.common.Rot;
@@ -83,13 +85,13 @@ public class MouseJoint extends Joint {
   }
 
   @Override
-  public void getAnchorA(Vec2 argOut) {
-    argOut.set(m_targetA);
+  public Optional<Vec2> getAnchorA() {
+    return Optional.of(m_targetA.clone());
   }
 
   @Override
-  public void getAnchorB(Vec2 argOut) {
-    m_bodyB.getWorldPointToOut(m_localAnchorB, argOut);
+  public Optional<Vec2> getAnchorB() {
+    return Optional.of(m_bodyB.getWorldPoint(m_localAnchorB).clone());
   }
 
   @Override

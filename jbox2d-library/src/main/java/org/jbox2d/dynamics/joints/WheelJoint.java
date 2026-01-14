@@ -125,12 +125,12 @@ public class WheelJoint extends Joint {
 
   @Override
   public void getAnchorA(Vec2 argOut) {
-    m_bodyA.getWorldPointToOut(m_localAnchorA, argOut);
+    m_bodyA.getWorldPointToOut(m_localAnchorA);
   }
 
   @Override
   public void getAnchorB(Vec2 argOut) {
-    m_bodyB.getWorldPointToOut(m_localAnchorB, argOut);
+    m_bodyB.getWorldPointToOut(m_localAnchorB);
   }
 
   @Override
@@ -153,8 +153,8 @@ public class WheelJoint extends Joint {
     Vec2 p1 = pool.popVec2();
     Vec2 p2 = pool.popVec2();
     Vec2 axis = pool.popVec2();
-    b1.getWorldPointToOut(m_localAnchorA, p1);
-    b2.getWorldPointToOut(m_localAnchorA, p2);
+    b1.getWorldPointToOut(m_localAnchorA);
+    b2.getWorldPointToOut(m_localAnchorA);
     p2.subLocal(p1);
     b1.getWorldVectorToOut(m_localXAxisA, axis);
 

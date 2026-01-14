@@ -34,6 +34,8 @@ import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.SolverData;
 import org.jbox2d.pooling.IWorldPool;
 
+import module java.base;
+
 //Point-to-point constraint
 //C = p2 - p1
 //Cdot = v2 - v1
@@ -455,13 +457,13 @@ public class RevoluteJoint extends Joint {
   }
 
   @Override
-  public void getAnchorA(Vec2 argOut) {
-    m_bodyA.getWorldPointToOut(m_localAnchorA, argOut);
+  public Optional<Vec2> getAnchorA() {
+    return Optional.of(m_bodyA.getWorldPoint(m_localAnchorA));
   }
 
   @Override
-  public void getAnchorB(Vec2 argOut) {
-    m_bodyB.getWorldPointToOut(m_localAnchorB, argOut);
+  public Optional<Vec2> getAnchorB() {
+    return Optional.of(m_bodyB.getWorldPoint(m_localAnchorB));
   }
 
   @Override

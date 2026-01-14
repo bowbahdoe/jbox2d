@@ -1,5 +1,7 @@
 package org.jbox2d.dynamics.joints;
 
+import java.util.Optional;
+
 import org.jbox2d.common.Mat22;
 import org.jbox2d.common.MathUtils;
 import org.jbox2d.common.Rot;
@@ -65,13 +67,13 @@ public class MotorJoint extends Joint {
   }
 
   @Override
-  public void getAnchorA(Vec2 out) {
-    out.set(m_bodyA.getPosition());
+  public Optional<Vec2> getAnchorA() {
+    return Optional.of(m_bodyA.getPosition());
   }
 
   @Override
-  public void getAnchorB(Vec2 out) {
-    out.set(m_bodyB.getPosition());
+  public Optional<Vec2> getAnchorB() {
+    return Optional.of(m_bodyB.getPosition());
   }
 
   public void getReactionForce(float inv_dt, Vec2 out) {

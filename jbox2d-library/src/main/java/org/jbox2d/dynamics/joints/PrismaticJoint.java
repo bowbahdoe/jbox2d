@@ -34,6 +34,8 @@ import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.SolverData;
 import org.jbox2d.pooling.IWorldPool;
 
+import module java.base;
+
 //Linear constraint (point-to-line)
 //d = p2 - p1 = x2 + r2 - x1 - r1
 //C = dot(perp, d)
@@ -177,13 +179,18 @@ public class PrismaticJoint extends Joint {
   }
 
   @Override
-  public void getAnchorA(Vec2 argOut) {
-    m_bodyA.getWorldPointToOut(m_localAnchorA, argOut);
+  public Optional<Vec2> getAnchorA() {
+    return Optional.of(
+      m_bodyA.getWorldPoint(m_localAnchorA).clone()
+    );
+  
   }
 
   @Override
-  public void getAnchorB(Vec2 argOut) {
-    m_bodyB.getWorldPointToOut(m_localAnchorB, argOut);
+  public Optional<Vec2> getAnchorB() {
+    return Optional.of(
+      m_bodyB.getWorldPoint(m_localAnchorB).clone()
+    );
   }
 
   @Override
@@ -248,8 +255,8 @@ public class PrismaticJoint extends Joint {
 
   public float getJointTranslation() {
     Vec2 pA = pool.popVec2(), pB = pool.popVec2(), axis = pool.popVec2();
-    m_bodyA.getWorldPointToOut(m_localAnchorA, pA);
-    m_bodyB.getWorldPointToOut(m_localAnchorB, pB);
+    m_bodyA.getWorldPointToOut(m_localAnchorA);
+    m_bodyB.getWorldPointToOut(m_localAnchorB);
     m_bodyA.getWorldVectorToOutUnsafe(m_localXAxisA, axis);
     pB.subLocal(pA);
     float translation = Vec2.dot(pB, axis);
@@ -409,14 +416,14 @@ public class PrismaticJoint extends Joint {
     Vec2 vB = data.velocities[m_indexB].v;
     float wB = data.velocities[m_indexB].w;
 
-    final Rot qA = pool.popRot();
-    final Rot qB = pool.popRot();
+    Rot qA = pool.popRot();
+    Rot qB = pool.popRot();
     final Vec2 d = pool.popVec2();
     final Vec2 temp = pool.popVec2();
     final Vec2 rA = pool.popVec2();
     final Vec2 rB = pool.popVec2();
 
-    qA.set(aA);
+    qA = aA;
     qB.set(aB);
 
     // Compute the effective masses.

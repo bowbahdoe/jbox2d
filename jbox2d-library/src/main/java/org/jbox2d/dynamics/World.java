@@ -23,6 +23,8 @@
  ******************************************************************************/
 package org.jbox2d.dynamics;
 
+import module java.base;
+import org.jbox2d.WasFinal;
 import org.jbox2d.callbacks.ContactFilter;
 import org.jbox2d.callbacks.ContactListener;
 import org.jbox2d.callbacks.DebugDraw;
@@ -672,7 +674,7 @@ public class World {
   }
 
   private final Color3f color = new Color3f();
-  private final Transform xf = new Transform();
+  private @WasFinal Transform xf = new Transform();
   private final Vec2 cA = new Vec2();
   private final Vec2 cB = new Vec2();
   private final Vec2Array avs = new Vec2Array();
@@ -691,7 +693,7 @@ public class World {
 
     if ((flags & DebugDraw.e_shapeBit) != 0) {
       for (Body b = m_bodyList; b != null; b = b.getNext()) {
-        xf.set(b.getTransform());
+        xf = b.getTransform();
         for (Fixture f = b.getFixtureList(); f != null; f = f.getNext()) {
           if (b.isActive() == false) {
             color.set(0.5f, 0.5f, 0.3f);
@@ -758,7 +760,7 @@ public class World {
 
     if ((flags & DebugDraw.e_centerOfMassBit) != 0) {
       for (Body b = m_bodyList; b != null; b = b.getNext()) {
-        xf.set(b.getTransform());
+        xf = b.getTransform();
         xf.p.set(b.getWorldCenter());
         m_debugDraw.drawTransform(xf);
       }
@@ -1067,7 +1069,7 @@ public class World {
 
     // update previous transforms
     for (Body b = m_bodyList; b != null; b = b.m_next) {
-      b.m_xf0.set(b.m_xf);
+      b.m_xf0 = b.m_xf;
     }
 
     // Size the island for the worst case.
@@ -1521,8 +1523,15 @@ public class World {
     Vec2 x2 = xf2.p;
     Vec2 p1 = pool.popVec2();
     Vec2 p2 = pool.popVec2();
-    joint.getAnchorA(p1);
-    joint.getAnchorB(p2);
+
+    var anchorA = joint.getAnchorA().orElse(null);
+    if (anchorA != null) {
+      p1.set(anchorA);
+    }
+    var anchorB = joint.getAnchorB().orElse(null);
+    if (anchorB != null) {
+      p2.set(anchorB);
+    }
 
     color.set(0.5f, 0.8f, 0.8f);
 
