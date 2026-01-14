@@ -90,8 +90,8 @@ public class DistanceTest extends TestbedTest {
 		
 		input.proxyA.set(m_polygonA,0);
 		input.proxyB.set(m_polygonB,0);
-		input.transformA.set(m_transformA);
-		input.transformB.set(m_transformB);
+		input.transformA = m_transformA;
+		input.transformB = m_transformB;
 		input.useRadii = true;
 		cache.count = 0;
 		getWorld().getPool().getDistance().distance(output, cache, input);
@@ -148,6 +148,6 @@ public class DistanceTest extends TestbedTest {
 				break;
 		}
 		
-		m_transformB.set(m_positionB, m_angleB);
+		m_transformB = new Transform(m_positionB, m_angleB);
 	}
 }
