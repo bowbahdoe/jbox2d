@@ -33,14 +33,16 @@ import java.io.Serializable;
 public class Rot implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public float s, c; // sin and cos
+  public final float s, c; // sin and cos
 
   public Rot() {
-    setIdentity();
+    s = 0;
+    c = 1;
   }
 
   public Rot(float angle) {
-    set(angle);
+    s = MathUtils.sin(angle);
+    c = MathUtils.cos(angle);
   }
 
   public float getSin() {
@@ -88,10 +90,7 @@ public class Rot implements Serializable {
 
   // @Override // annotation omitted for GWT-compatibility
   public Rot clone() {
-    Rot copy = new Rot();
-    copy.s = s;
-    copy.c = c;
-    return copy;
+    return this;
   }
 
   public static final void mul(Rot q, Rot r, Rot out) {

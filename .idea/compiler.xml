@@ -14,4 +14,13 @@
       </profile>
     </annotationProcessing>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="jbox2d-library" options="--enable-preview" />
+      <module name="jbox2d-serialization" options="--enable-preview" />
+      <module name="jbox2d-testbed" options="--enable-preview" />
+      <module name="jbox2d-testbed-javafx" options="--enable-preview" />
+      <module name="jbox2d-testbed-jogl" options="--enable-preview" />
+    </option>
+  </component>
 </project>
