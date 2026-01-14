@@ -117,22 +117,22 @@ public class DefaultWorldPool implements IWorldPool {
   private final Distance dist;
 
   public DefaultWorldPool(int argSize, int argContainerSize) {
-    vecs = new OrderedStack<Vec2>(argSize, argContainerSize) {
+    vecs = new OrderedStack<Vec2>() {
       protected Vec2 newInstance() { return new Vec2(); }
     };
-    vec3s = new OrderedStack<Vec3>(argSize, argContainerSize) {
+    vec3s = new OrderedStack<Vec3>() {
       protected Vec3 newInstance() { return new Vec3(); }
     };
-    mats = new OrderedStack<Mat22>(argSize, argContainerSize) {
+    mats = new OrderedStack<Mat22>() {
       protected Mat22 newInstance() { return new Mat22(); }
     };
-    aabbs = new OrderedStack<AABB>(argSize, argContainerSize) {
+    aabbs = new OrderedStack<AABB>() {
       protected AABB newInstance() { return new AABB(); }
     };
-    rots = new OrderedStack<Rot>(argSize, argContainerSize) {
+    rots = new OrderedStack<Rot>() {
       protected Rot newInstance() { return new Rot(); }
     };
-    mat33s = new OrderedStack<Mat33>(argSize, argContainerSize) {
+    mat33s = new OrderedStack<Mat33>() {
       protected Mat33 newInstance() { return new Mat33(); }
     };
 
