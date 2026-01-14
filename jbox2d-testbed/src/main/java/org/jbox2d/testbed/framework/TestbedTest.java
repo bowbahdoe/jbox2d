@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.jbox2d.WasFinal;
 import org.jbox2d.callbacks.ContactImpulse;
 import org.jbox2d.callbacks.ContactListener;
 import org.jbox2d.callbacks.DebugDraw;
@@ -125,7 +126,6 @@ public abstract class TestbedTest
   private final Transform identity = new Transform();
 
   public TestbedTest() {
-    identity.setIdentity();
     for (int i = 0; i < MAX_CONTACT_POINTS; i++) {
       points[i] = new ContactPoint();
     }
@@ -858,10 +858,11 @@ class ParticleVelocityQueryCallback implements ParticleQueryCallback {
   World world;
   Shape shape;
   Vec2 velocity;
-  final Transform xf = new Transform();
+  @WasFinal
+  Transform xf = new Transform();
 
   public ParticleVelocityQueryCallback() {
-    xf.setIdentity();
+    xf = new Transform();
   }
 
   public void init(World world, Shape shape, Vec2 velocity) {

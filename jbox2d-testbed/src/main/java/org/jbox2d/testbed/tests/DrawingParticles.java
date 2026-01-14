@@ -122,7 +122,7 @@ public class DrawingParticles extends TestbedTest {
     if (m_drawing) {
       pshape.m_p.set(p);
       pshape.m_radius = 2.0f;
-      pxf.setIdentity();
+      pxf = new Transform();
       m_world.destroyParticlesInShape(pshape, pxf);
       ppd.shape = pshape;
       ppd.color = color;

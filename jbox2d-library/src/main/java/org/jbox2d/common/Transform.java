@@ -60,9 +60,7 @@ public class Transform implements Serializable {
 
   /** Set this to equal another transform. */
   public final Transform set(final Transform xf) {
-    p.set(xf.p);
-    q.set(xf.q);
-    return this;
+    return new Transform(xf.p, xf.q);
   }
 
   /**
@@ -74,12 +72,6 @@ public class Transform implements Serializable {
   public final void set(Vec2 p, float angle) {
     this.p.set(p);
     q.set(angle);
-  }
-
-  /** Set this to the identity transform. */
-  public final void setIdentity() {
-    p.setZero();
-    q.setIdentity();
   }
 
   public final static Vec2 mul(final Transform T, final Vec2 v) {

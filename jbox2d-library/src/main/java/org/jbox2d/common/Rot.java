@@ -58,24 +58,6 @@ public class Rot implements Serializable {
     return c;
   }
 
-  public Rot set(float angle) {
-    s = MathUtils.sin(angle);
-    c = MathUtils.cos(angle);
-    return this;
-  }
-
-  public Rot set(Rot other) {
-    s = other.s;
-    c = other.c;
-    return this;
-  }
-
-  public Rot setIdentity() {
-    s = 0;
-    c = 1;
-    return this;
-  }
-
   public float getAngle() {
     return MathUtils.atan2(s, c);
   }

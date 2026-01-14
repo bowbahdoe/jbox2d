@@ -268,18 +268,14 @@ public class ParticleSystem {
 
   private final AABB temp2 = new AABB();
   private final Vec2 tempVec = new Vec2();
-  private final Transform tempTransform = new Transform();
-  private final Transform tempTransform2 = new Transform();
   private CreateParticleGroupCallback createParticleGroupCallback =
       new CreateParticleGroupCallback();
   private final ParticleDef tempParticleDef = new ParticleDef();
 
   public ParticleGroup createParticleGroup(ParticleGroupDef groupDef) {
     float stride = getParticleStride();
-    final Transform identity = tempTransform;
-    identity.setIdentity();
-    Transform transform = tempTransform2;
-    transform.setIdentity();
+    final Transform identity = new Transform();
+    Transform transform = new Transform();
     int firstIndex = m_count;
     if (groupDef.shape != null) {
       final ParticleDef particleDef = tempParticleDef;
@@ -896,7 +892,6 @@ public class ParticleSystem {
   }
 
   private final Vec2 tempVec2 = new Vec2();
-  private final Rot tempRot = new Rot();
   private final Transform tempXf = new Transform();
   private final Transform tempXf2 = new Transform();
 
@@ -906,8 +901,7 @@ public class ParticleSystem {
         group.updateStatistics();
         Vec2 temp = tempVec;
         Vec2 cross = tempVec2;
-        Rot rotation = tempRot;
-        rotation.set(step.dt * group.m_angularVelocity);
+        Rot rotation = new Rot(step.dt * group.m_angularVelocity);
         Rot.mulToOutUnsafe(rotation, group.m_center, cross);
         temp.set(group.m_linearVelocity).mulLocal(step.dt).addLocal(group.m_center).subLocal(cross);
         tempXf.p.set(temp);

@@ -197,7 +197,7 @@ public class PolyShapes extends TestbedTest {
     PolyShapesCallback callback = new PolyShapesCallback(getWorld().getPool());
     callback.m_circle.m_radius = 2.0f;
     callback.m_circle.m_p.set(0.0f, 2.1f);
-    callback.m_transform.setIdentity();
+    callback.m_transform = new Transform();
     callback.debugDraw = getDebugDraw();
 
     AABB aabb = new AABB();

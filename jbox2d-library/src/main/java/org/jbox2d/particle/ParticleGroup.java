@@ -1,5 +1,6 @@
 package org.jbox2d.particle;
 
+import org.jbox2d.WasFinal;
 import org.jbox2d.common.Transform;
 import org.jbox2d.common.Vec2;
 
@@ -19,7 +20,7 @@ public class ParticleGroup {
   final Vec2 m_center = new Vec2();
   final Vec2 m_linearVelocity = new Vec2();
   float m_angularVelocity;
-  final Transform m_transform = new Transform();
+  @WasFinal Transform m_transform = new Transform();
 
   boolean m_destroyAutomatically;
   boolean m_toBeDestroyed;
@@ -38,7 +39,7 @@ public class ParticleGroup {
     m_mass = 0;
     m_inertia = 0;
     m_angularVelocity = 0;
-    m_transform.setIdentity();
+    m_transform = new Transform();
 
     m_destroyAutomatically = true;
     m_toBeDestroyed = false;
