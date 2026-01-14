@@ -326,7 +326,7 @@ public class ParticleSystem {
     group.m_groupFlags = groupDef.groupFlags;
     group.m_strength = groupDef.strength;
     group.m_userData = groupDef.userData;
-    group.m_transform.set(transform);
+    group.m_transform = transform;
     group.m_destroyAutomatically = groupDef.destroyAutomatically;
     group.m_prev = null;
     group.m_next = m_groupList;
