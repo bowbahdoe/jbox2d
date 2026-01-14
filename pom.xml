@@ -10,8 +10,9 @@
 	
         <properties>
             <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-            <maven.compiler.source>13.0.2</maven.compiler.source>
-            <maven.compiler.target>13.0.2</maven.compiler.target>
+            <maven.compiler.source>26</maven.compiler.source>
+            <maven.compiler.target>26</maven.compiler.target>
+			<javafx.version>13.0.2</javafx.version>
 	</properties>
         
         <modules>
@@ -119,8 +120,10 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.1</version>
 					<configuration>
-                                            <release>13</release>
-                                            <optimise>true</optimise>
+						<compilerArgs>
+							<arg>--enable-preview</arg>
+						</compilerArgs>
+                                            <release>26</release>
 					</configuration>
 				</plugin>
 			</plugins>
